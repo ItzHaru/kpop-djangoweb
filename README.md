@@ -1,4 +1,4 @@
-# Kpop - kpop databáze v Django
+# Kpop databáze v Django
 ## školní projekt
 
-- Základní kostra aplikace
+- Základní kostra aplikace :)
