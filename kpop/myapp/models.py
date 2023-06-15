@@ -7,11 +7,13 @@ class Spolecnost(models.Model):
     datum_zalozeni = models.DateField(blank=True, null=True, verbose_name='Datum založení', auto_now=False, auto_now_add=False)
     hlavni_sidlo = models.CharField(max_length=100, verbose_name='Hlavní sídlo', help_text='Zadej hlavní sídlo', blank=True, null=True)
     ceo = models.ForeignKey('Ceo', on_delete=models.CASCADE, verbose_name='Jméno CEO', help_text='Vyber CEO', default=0)
+    logo = models.ImageField(upload_to='spolecnosti', null=True, blank=True, verbose_name='Logo spolecnosti',
+                              help_text='Nahrajte logo spolecnosti')
 
     class Meta:
         ordering = ['nazev_spolecnosti']
-        verbose_name = 'Společnost'
-        verbose_name_plural = 'Společnosti'
+        verbose_name = 'Spolecnost'
+        verbose_name_plural = 'Spolecnosti'
 
     def __str__(self):
         return self.nazev_spolecnosti
@@ -52,6 +54,7 @@ class Skupina(models.Model):
     debut = models.DateField(blank=True, null=True, verbose_name='Datum debutu', auto_now=False, auto_now_add=False)
     zanr = models.ManyToManyField('Zanry', verbose_name='Žánry', help_text='Vyberte žánry')
     spolecnost = models.ForeignKey('Spolecnost', on_delete=models.CASCADE, verbose_name='Společnost', help_text='Vyber společnost', default=0)
+    fotka = models.ImageField(upload_to='skupiny', null=True, blank=True, verbose_name='Fotka kpop skupiny', help_text='Nahrajte fotku skupiny')
     class Meta:
         ordering = ['nazev_skupiny']
         verbose_name = 'Skupina'
@@ -94,8 +97,8 @@ class Clen(models.Model):
 
     class Meta:
         ordering = ['prijmeni', 'jmeno']
-        verbose_name = 'Člen'
-        verbose_name_plural = 'Členové'
+        verbose_name = 'Clen'
+        verbose_name_plural = 'Clenové'
 
     def __str__(self):
         return f'{self.jmeno, self.prijmeni}'

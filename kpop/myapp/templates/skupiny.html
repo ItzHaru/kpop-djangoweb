@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Skupiny{% endblock %}
+
+{% block content %}
+    <h1>Skupiny</h1>
+    <div class="row bg-dark p-3">
+    {% for skupina in skupiny %}
+        <div class="col-lg-2 col-md-4">
+            <img src="{{ skupina.fotka.url }}"
+                 alt="Fotka: {{ skupina.nazev_skupiny }}"
+                 class="img-fluid rounded">
+            <p><a href="{% url 'skupina_detail' skupina.id %}">{{ skupina.nazev_skupiny }}</a></p>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

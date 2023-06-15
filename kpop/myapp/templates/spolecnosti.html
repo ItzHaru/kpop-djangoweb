@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Společnosti{% endblock %}
+
+{% block content %}
+    <h1>Společnosti</h1>
+    <div class="row bg-light p-3">
+    {% for spolecnost in spolecnosti %}
+        <div class="col-lg-2 col-md-4">
+            <img src="{{ spolecnost.logo.url }}"
+                 alt="Fotka: {{ spolecnost.nazev_spolecnosti }}"
+                 class="img-fluid rounded">
+            <p><a href="{% url 'spolecnost_detail' spolecnost.id %}">{{ spolecnost.nazev_spolecnosti }}</a></p>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

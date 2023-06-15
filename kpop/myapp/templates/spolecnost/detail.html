@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ spolecnost }}{% endblock %}
+
+{% block content %}
+    <h2>{% for spolecnost in spolecnosti %}
+        <a href="{% url 'spolecnost_detail' spolecnost.id %}">{{ spolecnost }}</a>
+        {% endfor %}
+        {{ spolecnost.nazev_spolecnosti }}</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ spolecnost.logo.url }}" alt="{{ spolecnost }}"
+                 class="img-fluid">
+            <hr>
+        </div>
+        <div class="col-md-8">
+            <div>
+                <p>Datum založení: {{ spolecnost.datum_zalozeni }}</p>
+                <p>Hlavní sídlo: {{ spolecnost.hlavni_sidlo }}</p>
+                <p>CEO: {{ spolecnost.ceo }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
